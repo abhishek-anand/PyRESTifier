@@ -5,7 +5,7 @@ We would publish a REST API for ToDo List, two maths functions and a python
 library function as remote calls over HTTP, all over the same location (port).
 """
 import publishers
-import md5
+from hashlib import md5
 
 
 def is_zero(n):
@@ -65,7 +65,7 @@ mapping = publishers.VerbMappings(get={'method': todo_list.get_todo},
 http_publisher = publishers.HTTPPublisher()
 http_publisher.add_mapping(add)
 http_publisher.add_mapping(is_zero, '/iszero/')  # custom defined url
-http_publisher.add_mapping(lambda x: md5.md5(*[x]).hexdigest(), '/checksum/')
+http_publisher.add_mapping(lambda x: md5(*[x]).hexdigest(), '/checksum/')
 
 # Here we are using the same app created for HTTPPublisher, we could in fact
 # have created a new flask app here and passed it to both of these as parameter
@@ -81,4 +81,3 @@ if __name__ == "__main__":
     # a parameter to publish, otherwise it will start on a random port which
     # you can check via the console logs
     rest_publisher.publish()  # http_publisher gets auto published as they share app instance
-    
