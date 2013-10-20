@@ -1,9 +1,9 @@
-RESTifier
+PyRESTifier
 ========================
 
 RESTifier turns your Python module/class or bunch of functions into a REST or even plain HTTP API and publishes them over HTTP. Currently we have inbuilt support for JSON serialization but it can be extended by adding any of your own serializer.
 
-Later things like authentication and schema check would be added. The code is very verbose and to check how to use it, please look into example.py file in the repository.
+Later things like authentication and schema check would be added. The code is very verbose and to check how to use it, please look into example.py file in the repository. Internally we use Flask, a Python micro-framework to handle HTTP requests.
 
 
 ```python 
